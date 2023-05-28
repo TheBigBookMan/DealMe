@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const businessController = require("../../controller/businessController.js");
 
-router.route("/").get(businessController.getAllBusiness);
+router
+    .route("/")
+    .get(businessController.getAllBusiness)
+    .post(businessController.createBusiness);
 
-export default router;
+module.exports = router;

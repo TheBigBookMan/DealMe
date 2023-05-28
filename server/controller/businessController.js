@@ -4,7 +4,6 @@ const businessHttp = {
     getAllBusiness: async (req, res) => {
         try {
             const businesses = await prisma.businesses.findMany();
-            console.log("HEREE");
             res.json(businesses);
         } catch (err) {
             console.log(err);
@@ -28,4 +27,4 @@ const businessHttp = {
     },
 };
 
-export default businessHttp;
+module.exports = businessHttp;
