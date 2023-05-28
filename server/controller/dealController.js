@@ -24,6 +24,13 @@ const dealHttp = {
             res.status(500).json({ message: "Could not get deal." });
         }
     },
+    addDeal: async (req, res) => {
+        try {
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({ message: "Could not create." });
+        }
+    },
 };
 
 module.exports = dealHttp;
