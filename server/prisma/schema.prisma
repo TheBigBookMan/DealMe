@@ -17,7 +17,22 @@ model Businesses {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     name String 
     location String
-    
+    notificationDay String?
+    contactNumber String?
+    openTime String?
+    closeTime String?
+    deals Deal[]
 }
 
 // * new model for event
+model Deal {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    title String
+    date DateTime
+    description String?
+    price Int
+    startTime String
+    endTime String
+    business Businesses @relation(fields: [businessId], references: [id])
+    businessId String @db.ObjectId
+}
