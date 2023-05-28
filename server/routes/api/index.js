@@ -1,6 +1,6 @@
-import { Router } from "express";
-import businessRoutes from "./businessRoutes";
+const router = require("express").Router();
+const businessRoutes = require("./businessRoutes.js");
 
-Router.use("/businesses", businessRoutes);
+router.use("/businesses", businessRoutes);
 
-export default Router;
+module.exports = router;

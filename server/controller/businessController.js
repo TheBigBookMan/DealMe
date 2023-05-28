@@ -1,20 +1,22 @@
-import prisma from "./client";
+const prisma = require("./client");
 
-export default {
+const businessHttp = {
     getAllBusiness: async (req, res) => {
         try {
             const businesses = await prisma.businesses.findMany();
+            console.log("HEREE");
             res.json(businesses);
         } catch (err) {
             console.log(err);
+            res.status(500).json({ message: "Server Error" });
         }
     },
     createBusiness: async (req, res) => {
         try {
-            const { title, location } = req.body;
+            const { name, location } = req.body;
             const newBusiness = await prisma.businesses.create({
                 data: {
-                    title,
+                    name,
                     location,
                 },
             });
@@ -25,3 +27,5 @@ export default {
         }
     },
 };
+
+export default businessHttp;
