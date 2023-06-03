@@ -32,6 +32,9 @@ const businessHttp = {
                 where: {
                     id: businessId,
                 },
+                include: {
+                    deals: true,
+                },
             });
             res.json(business);
         } catch (err) {
