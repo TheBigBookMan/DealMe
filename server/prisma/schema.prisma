@@ -24,13 +24,14 @@ model Businesses {
     deals Deal[]
 }
 
+// ???!!! DateTime type needs to be adjusted, using string for dev
 // * new model for event
 model Deal {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     title String
-    date DateTime
+    date String
     description String?
-    price Int
+    price Float
     startTime String
     endTime String
     business Businesses @relation(fields: [businessId], references: [id])
