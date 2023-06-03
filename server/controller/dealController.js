@@ -46,16 +46,17 @@ const dealHttp = {
                     businessId,
                 },
             });
-            await prisma.businesses.update({
-                where: {
-                    id: businessId,
-                },
-                data: {
-                    deals: {
-                        push: newDeal,
-                    },
-                },
-            });
+            // await prisma.businesses.update({
+            //     where: {
+            //         id: businessId,
+            //     },
+            //     data: {
+            //         deals: {
+            //             push: newDeal,
+            //         },
+            //     },
+            // });
+            res.json(newDeal);
         } catch (err) {
             console.log(err);
             res.status(500).json({
