@@ -42,6 +42,22 @@ const businessHttp = {
             res.status(500).json({ message: "Couldn't find business." });
         }
     },
+    deleteBusiness: async (req, res) => {
+        try {
+            const { businessId } = req.params;
+            await prisma.businesses.delete({
+                where: {
+                    id: businessId,
+                },
+            });
+            res.json({ message: "Successfully deleted business!" });
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message: "Could not delete Business, please try again.",
+            });
+        }
+    },
 };
 
 module.exports = businessHttp;
