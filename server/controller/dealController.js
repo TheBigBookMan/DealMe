@@ -64,6 +64,22 @@ const dealHttp = {
             });
         }
     },
+    deleteDeal: async (req, res) => {
+        try {
+            const { dealId } = req.params;
+            await prisma.deal.delete({
+                where: {
+                    id: dealId,
+                },
+            });
+            res.json({ message: "Deleted deal successfully!" });
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message: "Could not delete deal, please try again.",
+            });
+        }
+    },
 };
 
 module.exports = dealHttp;
