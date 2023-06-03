@@ -5,6 +5,9 @@ const dealController = require("../../controller/dealController");
 router.route("/").get(dealController.getAllDeals).post(dealController.addDeal);
 
 // ? Route '/:dealId'
-router.route("/:dealId").get(dealController.getDeal);
+router
+    .route("/:dealId")
+    .get(dealController.getDeal)
+    .delete(dealController.deleteDeal);
 
 module.exports = router;
