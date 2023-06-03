@@ -8,6 +8,9 @@ router
     .post(businessController.createBusiness);
 
 // ? Route '/:businessId'
-router.route("/:businessId").get(businessController.getSingleBusiness);
+router
+    .route("/:businessId")
+    .get(businessController.getSingleBusiness)
+    .delete(businessController.deleteBusiness);
 
 module.exports = router;
