@@ -15,7 +15,7 @@ const dealHttp = {
             const { dealId } = req.params;
             const deal = await prisma.deal.findUnique({
                 where: {
-                    od: dealId,
+                    id: dealId,
                 },
             });
             res.json(deal);
@@ -26,9 +26,41 @@ const dealHttp = {
     },
     addDeal: async (req, res) => {
         try {
+            const {
+                title,
+                date,
+                description,
+                price,
+                startTime,
+                endTime,
+                businessId,
+            } = req.body;
+            const newDeal = await prisma.deal.create({
+                data: {
+                    title,
+                    date,
+                    description,
+                    price,
+                    startTime,
+                    endTime,
+                    businessId,
+                },
+            });
+            await prisma.businesses.update({
+                where: {
+                    id: businessId,
+                },
+                data: {
+                    deals: {
+                        push: newDeal,
+                    },
+                },
+            });
         } catch (err) {
             console.log(err);
-            res.status(500).json({ message: "Could not create." });
+            res.status(500).json({
+                message: "Could not create new deal, please try again.",
+            });
         }
     },
 };
