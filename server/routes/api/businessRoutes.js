@@ -11,6 +11,7 @@ router
 router
     .route("/:businessId")
     .get(businessController.getSingleBusiness)
-    .delete(businessController.deleteBusiness);
+    .delete(businessController.deleteBusiness)
+    .put(businessController.addBusinessSettings);
 
 module.exports = router;
