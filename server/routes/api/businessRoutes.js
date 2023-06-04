@@ -12,6 +12,11 @@ router
     .route("/:businessId")
     .get(businessController.getSingleBusiness)
     .delete(businessController.deleteBusiness)
+    .put(businessController.addNotification);
+
+// ? Route '/:businessId/settings'
+router
+    .route("/:businessId/settings")
     .put(businessController.addBusinessSettings);
 
 module.exports = router;
