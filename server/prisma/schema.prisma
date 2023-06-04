@@ -18,11 +18,13 @@ model Businesses {
     name String 
     location String
     notificationDay String?
+    notificationTime String?
     contactNumber String?
     openTime String?
     closeTime String?
     deals Deal[]
 }
+
 
 // ???!!! DateTime type needs to be adjusted, using string for dev
 // * new model for event
@@ -37,3 +39,5 @@ model Deal {
     business Businesses @relation(fields: [businessId], references: [id])
     businessId String @db.ObjectId
 }
+
+// ?? Coul have in another model for category where the deal could be categorised, eg- food or drinks and then maybe a subcategory of which food like hamburgers, parims, spaghetti etc
