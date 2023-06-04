@@ -62,6 +62,26 @@ const businessHttp = {
             });
         }
     },
+    addBusinessSettings: async (req, res) => {
+        try {
+            const { contactNumber, openTime, closeTime } = req.body;
+            const { businessId } = req.params;
+            const updatedBusiness = await prisma.businesses.update({
+                where: {
+                    id: businessId,
+                },
+                data: {
+                    contactNumber,
+                    openTime,
+                    closeTime,
+                },
+            });
+            res.json(updatedBusiness);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({ message: "Could not update details." });
+        }
+    },
 };
 
 module.exports = businessHttp;
