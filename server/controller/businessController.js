@@ -82,6 +82,28 @@ const businessHttp = {
             res.status(500).json({ message: "Could not update details." });
         }
     },
+    addNotification: async (req, res) => {
+        try {
+            const { businessId } = req.params;
+            const { notificationDay, notificationTime } = req.body;
+            const businessNotifications = await prisma.businesses.update({
+                where: {
+                    id: businessId,
+                },
+                data: {
+                    notificationDay,
+                    notificationTime,
+                },
+            });
+            res.json(businessNotifications);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message:
+                    "Could not update notification time, please try again.",
+            });
+        }
+    },
 };
 
 module.exports = businessHttp;
