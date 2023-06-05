@@ -78,6 +78,42 @@ const eventHttp = {
             });
         }
     },
+    updateEvent: async (req, res) => {
+        try {
+            const { eventId } = req.params;
+            const {
+                title,
+                date,
+                description,
+                price,
+                startTime,
+                endTime,
+                location,
+                capacity,
+            } = req.body;
+            const updatedEvent = await prisma.event.update({
+                where: {
+                    id: eventId,
+                },
+                data: {
+                    title,
+                    date,
+                    description,
+                    price,
+                    startTime,
+                    endTime,
+                    location,
+                    capacity,
+                },
+            });
+            res.json(updatedEvent);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message: "Could not update event, please try again.",
+            });
+        }
+    },
 };
 
 module.exports = eventHttp;
