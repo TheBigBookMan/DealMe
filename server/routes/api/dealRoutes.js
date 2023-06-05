@@ -8,6 +8,7 @@ router.route("/").get(dealController.getAllDeals).post(dealController.addDeal);
 router
     .route("/:dealId")
     .get(dealController.getDeal)
-    .delete(dealController.deleteDeal);
+    .delete(dealController.deleteDeal)
+    .put(dealController.updateDeal);
 
 module.exports = router;
