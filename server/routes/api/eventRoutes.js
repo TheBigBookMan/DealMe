@@ -8,6 +8,9 @@ router
     .post(eventController.addEvent);
 
 // ? Route '/:eventId'
-router.route("/:eventId").get(eventController.getEvent);
+router
+    .route("/:eventId")
+    .get(eventController.getEvent)
+    .delete(eventController.deleteEvent);
 
 module.exports = router;
