@@ -28,6 +28,40 @@ const eventHttp = {
             });
         }
     },
+    addEvent: async (req, res) => {
+        try {
+            const {
+                title,
+                date,
+                description,
+                price,
+                startTime,
+                endTime,
+                location,
+                capacity,
+                businessId,
+            } = req.body;
+            const addedEvent = await prisma.event.create({
+                data: {
+                    title,
+                    date,
+                    description,
+                    price,
+                    startTime,
+                    endTime,
+                    location,
+                    capacity,
+                    businessId,
+                },
+            });
+            res.json(addedEvent);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message: "Could not create event, please try again.",
+            });
+        }
+    },
 };
 
 module.exports = eventHttp;
