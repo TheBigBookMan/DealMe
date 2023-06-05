@@ -11,6 +11,7 @@ router
 router
     .route("/:eventId")
     .get(eventController.getEvent)
-    .delete(eventController.deleteEvent);
+    .delete(eventController.deleteEvent)
+    .put(eventController.updateEvent);
 
 module.exports = router;
