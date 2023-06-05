@@ -23,11 +23,12 @@ model Businesses {
     openTime String?
     closeTime String?
     deals Deal[]
+    events Event[]
 }
 
 
 // ???!!! DateTime type needs to be adjusted, using string for dev
-// * new model for event
+// * new model for deal
 model Deal {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     title String
@@ -36,6 +37,21 @@ model Deal {
     price Float
     startTime String
     endTime String
+    business Businesses @relation(fields: [businessId], references: [id])
+    businessId String @db.ObjectId
+}
+
+// * Model for event
+model Event {
+    id String @id @default(auto()) @map ("_id") @db.ObjectId
+    title String
+    date String
+    description String?
+    price Float
+    startTime String
+    endTime String
+    location String
+    capacity String
     business Businesses @relation(fields: [businessId], references: [id])
     businessId String @db.ObjectId
 }
