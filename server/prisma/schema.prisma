@@ -51,7 +51,7 @@ model Event {
     startTime String
     endTime String
     location String
-    capacity String
+    capacity Int
     business Businesses @relation(fields: [businessId], references: [id])
     businessId String @db.ObjectId
 }
