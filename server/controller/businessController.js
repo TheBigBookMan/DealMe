@@ -6,6 +6,7 @@ const businessHttp = {
             const businesses = await prisma.businesses.findMany({
                 include: {
                     deals: true,
+                    events: true,
                 },
             });
             res.json(businesses);
@@ -38,6 +39,7 @@ const businessHttp = {
                 },
                 include: {
                     deals: true,
+                    events: true,
                 },
             });
             res.json(business);
