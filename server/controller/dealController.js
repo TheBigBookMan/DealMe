@@ -46,16 +46,6 @@ const dealHttp = {
                     businessId,
                 },
             });
-            // await prisma.businesses.update({
-            //     where: {
-            //         id: businessId,
-            //     },
-            //     data: {
-            //         deals: {
-            //             push: newDeal,
-            //         },
-            //     },
-            // });
             res.json(newDeal);
         } catch (err) {
             console.log(err);
@@ -77,6 +67,32 @@ const dealHttp = {
             console.log(err);
             res.status(500).json({
                 message: "Could not delete deal, please try again.",
+            });
+        }
+    },
+    updateDeal: async (req, res) => {
+        try {
+            const { dealId } = req.params;
+            const { title, date, description, price, startTime, endTime } =
+                req.body;
+            const updatedDeal = await prisma.deal.update({
+                where: {
+                    id: dealId,
+                },
+                data: {
+                    title,
+                    date,
+                    description,
+                    price,
+                    startTime,
+                    endTime,
+                },
+            });
+            res.json(updatedDeal);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message: "Cannot update deal, please try again!",
             });
         }
     },
