@@ -62,6 +62,22 @@ const eventHttp = {
             });
         }
     },
+    deleteEvent: async (req, res) => {
+        try {
+            const { eventId } = req.params;
+            await prisma.event.delete({
+                where: {
+                    id: eventId,
+                },
+            });
+            res.json({ message: "Event deleted successfully!" });
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message: "Could not delete event, please try again.",
+            });
+        }
+    },
 };
 
 module.exports = eventHttp;
