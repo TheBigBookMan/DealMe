@@ -17,7 +17,9 @@ export default function App() {
     return (
         <SafeAreaView>
             <View className="h-full flex justify-center items-center">
-                <Text className="font-bold bg-blue-400">OHey there baby!</Text>
+                <Text className="font-bold bg-blue-400 text-xl">
+                    OHey there baby!
+                </Text>
                 <Text className="text-green-300 font-bold">LETSSS GOOOD</Text>
                 <Ionicons
                     name="md-checkmark-circle"
