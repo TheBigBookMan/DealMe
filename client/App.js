@@ -1,4 +1,6 @@
 import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { Text, View, SafeAreaView, TextInput } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState } from "react";
@@ -17,11 +19,18 @@ import Map from "./src/screens/Map";
 
 // * no user sign up for first version, just a read and find deals, can add in user sign up with things like booking and favourites
 
+const Tab = createMaterialBottomTabNavigator();
+
 export default function App() {
     return (
-        <SafeAreaView>
+        <NavigationContainer>
             <StatusBar></StatusBar>
-            <Home />
-        </SafeAreaView>
+            <Tab.Navigator>
+                <Tab.Screen name="Home" component={Home} />
+                <Tab.Screen name="Deals" component={Deals} />
+                <Tab.Screen name="Businesses" component={Businesses} />
+                <Tab.Screen name="Settings" component={Settings} />
+            </Tab.Navigator>
+        </NavigationContainer>
     );
 }
