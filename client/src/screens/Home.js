@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, Image } from "react-native";
 
 // ? Can have multple components, maybe a search bar at top
 // ? A map with nearby locations with maybe little red dots on them on the map close by where something is on and maybe yellow dots fr favourites places that have things on for that night
@@ -9,7 +9,10 @@ const Home = () => {
     return (
         <SafeAreaView>
             <View>
-                <Text className="font-bold">DeadddlMe</Text>
+                <Image
+                    className="w-full h-16"
+                    source={require("../images/logo.png")}
+                />
             </View>
         </SafeAreaView>
     );
