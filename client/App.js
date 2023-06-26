@@ -25,7 +25,7 @@ export default function App() {
     return (
         <NavigationContainer>
             <StatusBar></StatusBar>
-            <Tab.Navigator>
+            <Tab.Navigator activeColor="#1CB2A4">
                 <Tab.Screen name="Home" component={Home} />
                 <Tab.Screen name="Deals" component={Deals} />
                 <Tab.Screen name="Businesses" component={Businesses} />
