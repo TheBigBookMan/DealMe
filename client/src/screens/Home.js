@@ -8,7 +8,7 @@ import Specials from "./../components/Home/Specials";
 
 const Home = () => {
     return (
-        <SafeAreaView>
+        <SafeAreaView nestedScrollEnabled={true}>
             <ScrollView className="w-full h-full">
                 <SearchBar />
                 <Categories />
