@@ -1,15 +1,6 @@
-import { FlatList, Text, View, Image, Pressable, Alert } from "react-native";
+import { View, Text, Pressable, Image } from "react-native";
 
-import { specialshard } from "../../utils/deals";
-
-// ? Maybe a "special offers" section where companies can pay us to promote even more on the homepage
-// ? What's on tonight section?????
-
-const ListItem = ({ data }) => {
-    const goToDeal = (deal) => {
-        Alert.alert(deal);
-    };
-
+const DealItem = ({ data }) => {
     return (
         <View className="flex-row justify-between h-[140px]  py-4 ">
             <View className="flex flex-col">
@@ -34,19 +25,4 @@ const ListItem = ({ data }) => {
     );
 };
 
-const Specials = () => {
-    return (
-        <View className="p-4 border bg-bg-light rounded-xl flex flex-col">
-            <Text className="font-bold text-xl text-red-500">
-                What's Hot Tonight?
-            </Text>
-            <FlatList
-                className="overflow-y-scroll h-[400px]"
-                data={specialshard}
-                renderItem={({ item }) => <ListItem data={item} />}
-            />
-        </View>
-    );
-};
-
-export default Specials;
+export default DealItem;
