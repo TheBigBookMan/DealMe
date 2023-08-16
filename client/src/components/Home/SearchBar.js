@@ -10,13 +10,13 @@ const SearchBar = () => {
     };
 
     return (
-        <View className="flex flex-row gap-4 p-4 px-8">
-            <FontAwesome name="search" size={30} color="tomato" />
+        <View className="flex flex-row gap-4 p-4 px-8 bg-bg-dark">
+            <FontAwesome name="search" size={30} color="red" />
             <TextInput
                 onSubmitEditing={search}
                 returnKeyType="search"
-                className="border w-5/6 rounded-xl pl-4"
-                placeholder="Search for Deals"
+                className="border w-5/6 rounded-xl pl-4 bg-slate-300 text-gray-800"
+                placeholder="Search..."
                 onChangeText={setSearchItem}
                 value={searchItem}
             ></TextInput>

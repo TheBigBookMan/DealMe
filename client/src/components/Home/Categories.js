@@ -5,7 +5,7 @@ const ListItem = ({ type, icon }) => {
     return (
         <View className="flex flex-col items-center">
             {icon}
-            <Text className="w-[80px] text-center">{type}</Text>
+            <Text className="w-[80px] text-center text-slate-200">{type}</Text>
         </View>
     );
 };
@@ -21,11 +21,7 @@ const Categories = () => {
                     <ListItem
                         type={item.type}
                         icon={
-                            <item.icon
-                                name={item.name}
-                                size="30"
-                                color="tomato"
-                            />
+                            <item.icon name={item.name} size="30" color="red" />
                         }
                     />
                 )}

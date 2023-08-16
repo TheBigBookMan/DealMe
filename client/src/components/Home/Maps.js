@@ -5,7 +5,7 @@ import { Text, View } from "react-native";
 const Maps = () => {
     return (
         <View>
-            <Text>Mapos</Text>
+            <Text className="text-white">Mapos</Text>
         </View>
     );
 };

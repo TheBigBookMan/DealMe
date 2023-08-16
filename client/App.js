@@ -25,13 +25,22 @@ import Map from "./src/screens/Map";
 
 // TODO refactor as a navbar in components common
 
+// TODO combos should encourage other venues to partner with each other. For example go to Bar A first and get 20% off Bar B.
+// TODO combos to stay longer after ordering meal to stay for event
+// TODO could o location percent off
+// ? incentivise people to go to areas etc and other lcoations
+
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
     return (
         <NavigationContainer>
             <StatusBar></StatusBar>
-            <Tab.Navigator activeColor="green">
+            <Tab.Navigator
+                activeColor="red"
+                inactiveColor="white"
+                barStyle={{ backgroundColor: "#212121" }}
+            >
                 <Tab.Screen
                     name="Home"
                     component={Home}
@@ -40,7 +49,7 @@ export default function App() {
                             <Entypo
                                 name="home"
                                 size={25}
-                                color={focused ? "tomato" : "black"}
+                                color={focused ? "red" : "white"}
                             />
                         ),
                     }}
@@ -53,7 +62,7 @@ export default function App() {
                             <MaterialCommunityIcons
                                 name="food-fork-drink"
                                 size={24}
-                                color={focused ? "tomato" : "black"}
+                                color={focused ? "red" : "white"}
                             />
                         ),
                     }}
@@ -66,7 +75,7 @@ export default function App() {
                             <FontAwesome
                                 name="list-ul"
                                 size={24}
-                                color={focused ? "tomato" : "black"}
+                                color={focused ? "red" : "white"}
                             />
                         ),
                     }}
@@ -79,7 +88,7 @@ export default function App() {
                             <FontAwesome
                                 name="cog"
                                 size={24}
-                                color={focused ? "tomato" : "black"}
+                                color={focused ? "red" : "white"}
                             />
                         ),
                     }}
