@@ -1,9 +1,29 @@
 import { View, Text } from "react-native";
+import { Searchbar } from "react-native-paper";
+import { useState } from "react";
 
 const Businesses = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const onChangeSearch = (query) => setSearchQuery(query);
+
+    // TODO add in proepr search
+    const submitSearch = () => {
+        alert(searchQuery);
+    };
+
     return (
         <View>
-            <Text className="text-white">Businesses</Text>
+            <Text className="font-bold text-red-500 p-2 text-3xl">
+                Businesses
+            </Text>
+            <Searchbar
+                onSubmitEditing={submitSearch}
+                elevation={1}
+                iconColor="red"
+                placeholder="Search"
+                onChangeText={onChangeSearch}
+                value={searchQuery}
+            />
         </View>
     );
 };
