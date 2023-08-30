@@ -28,9 +28,7 @@ const Home = () => {
                 value={searchQuery}
             />
             <Categories />
-            <ScrollView>
-                <Specials />
-            </ScrollView>
+            <Specials />
             <Map />
         </View>
     );
