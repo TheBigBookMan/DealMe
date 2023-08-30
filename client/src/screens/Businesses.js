@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { useState } from "react";
+import BusinessList from "../components/Businesses/BusinessList";
 
 const Businesses = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -24,6 +25,7 @@ const Businesses = () => {
                 onChangeText={onChangeSearch}
                 value={searchQuery}
             />
+            <BusinessList />
         </View>
     );
 };
