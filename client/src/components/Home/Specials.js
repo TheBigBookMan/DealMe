@@ -1,4 +1,4 @@
-import { View, Text, Image, Pressable, Alert } from "react-native";
+import { View, Text, Image, Pressable, Alert, ScrollView } from "react-native";
 import { List } from "react-native-paper";
 import { specialshard } from "../../utils/deals";
 
@@ -24,7 +24,7 @@ const Specials = () => {
     return (
         <View className=" h-[400px] bg-gray-800 p-2">
             <Text className="font-bold text-2xl text-red-500">Specials</Text>
-            <View className="flex flex-col overflow-y-auto">
+            <ScrollView className="flex flex-col overflow-y-auto">
                 {specialshard.map((deal) => (
                     <List.Item
                         title={deal.special}
@@ -37,7 +37,7 @@ const Specials = () => {
                         )}
                     />
                 ))}
-            </View>
+            </ScrollView>
         </View>
     );
 };
