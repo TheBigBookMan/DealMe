@@ -49,7 +49,7 @@ const Deals = () => {
     };
 
     return (
-        <View>
+        <View className="flex flex-col gap-2 p-1 px-2">
             <Text className="font-bold text-red-500 p-2 text-3xl">Deals</Text>
             <Searchbar
                 onSubmitEditing={submitSearch}
