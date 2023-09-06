@@ -19,22 +19,20 @@ const Description = ({ data }) => {
 
 const DealsList = () => {
     return (
-        <View className="  bg-gray-800 p-2">
-            <ScrollView className="flex flex-col overflow-y-auto">
-                {specialshard.map((deal) => (
-                    <List.Item
-                        title={deal.special}
-                        description={() => <Description data={deal} />}
-                        left={(props) => (
-                            <Image
-                                source={deal.img}
-                                className="w-[100px] h-[80px] rounded-xl"
-                            />
-                        )}
-                    />
-                ))}
-            </ScrollView>
-        </View>
+        <ScrollView className="flex flex-col overflow-y-auto bg-gray-800 p-2">
+            {specialshard.map((deal) => (
+                <List.Item
+                    title={deal.special}
+                    description={() => <Description data={deal} />}
+                    left={(props) => (
+                        <Image
+                            source={deal.img}
+                            className="w-[100px] h-[80px] rounded-xl"
+                        />
+                    )}
+                />
+            ))}
+        </ScrollView>
     );
 };
 

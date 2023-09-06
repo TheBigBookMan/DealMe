@@ -29,16 +29,14 @@ const Description = ({ data }) => {
 
 const BusinessList = () => {
     return (
-        <View className="">
-            <ScrollView className="flex flex-col overflow-y-auto">
-                {businesses.map((business) => (
-                    <List.Item
-                        title={business.name}
-                        description={() => <Description data={business} />}
-                    />
-                ))}
-            </ScrollView>
-        </View>
+        <ScrollView className="flex flex-col overflow-y-auto">
+            {businesses.map((business) => (
+                <List.Item
+                    title={business.name}
+                    description={() => <Description data={business} />}
+                />
+            ))}
+        </ScrollView>
     );
 };
 

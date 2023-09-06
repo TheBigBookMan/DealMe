@@ -44,4 +44,32 @@ export const specialshard = [
         location: "Norwood, 5060, Adelaide",
         img: cocktail,
     },
+    {
+        venue: "Marion Hoten",
+        special: "$10 pints",
+        time: "8-10pm",
+        location: "Marion, 5362, Adelaide",
+        img: parmi,
+    },
+    {
+        venue: "The Bar",
+        special: "Free cocktails",
+        time: "6-7pm",
+        location: "Norwood, 5060, Adelaide",
+        img: cocktail,
+    },
+    {
+        venue: "Marion Hoten",
+        special: "$10 pints",
+        time: "8-10pm",
+        location: "Marion, 5362, Adelaide",
+        img: parmi,
+    },
+    {
+        venue: "The Bar",
+        special: "Free cocktails",
+        time: "6-7pm",
+        location: "Norwood, 5060, Adelaide",
+        img: cocktail,
+    },
 ];
