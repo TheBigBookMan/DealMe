@@ -1,6 +1,30 @@
 import { View, Text } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { useState } from "react";
+import SelectDropdown from "react-native-select-dropdown";
+
+const dealCategories = [
+    "Food",
+    "Drinks",
+    "Hot",
+    "Events",
+    "Combos",
+    "Discount",
+    "Specials",
+    "Clearings",
+];
+
+const locationdata = [
+    "Adelaide",
+    "Mitcham",
+    "Unley",
+    "Marion",
+    "Warradale",
+    "Victor Harbor",
+    "Port Elliot",
+    "Glenelg",
+    "Norwood",
+];
 
 const Deals = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -9,6 +33,18 @@ const Deals = () => {
     // TODO add in proepr search
     const submitSearch = () => {
         alert(searchQuery);
+    };
+
+    // TODO fix this up to filter the venue type
+    const selectType = (e) => {
+        console.log(e);
+        alert(e);
+    };
+
+    // TODO fix this up to filter the venue location
+    const selectLocation = (e) => {
+        console.log(e);
+        alert(e);
     };
 
     return (
@@ -22,6 +58,54 @@ const Deals = () => {
                 onChangeText={onChangeSearch}
                 value={searchQuery}
             />
+            <View className="flex flex-row mb-2">
+                <SelectDropdown
+                    data={dealCategories}
+                    onSelect={(e) => selectType(e)}
+                    defaultButtonText={"Type"}
+                    rowTextStyle={{ color: "white" }}
+                    dropdownStyle={{
+                        borderBottomEndRadius: "20px",
+                        borderBottomColor: "red",
+                        backgroundColor: "black",
+                        borderColor: "red",
+                        color: "red",
+                    }}
+                    buttonStyle={{
+                        borderRadius: "20px",
+                        backgroundColor: "black",
+                        borderWidth: "2px",
+                        color: "red",
+                        borderColor: "red",
+                        width: "50%",
+                    }}
+                    selectedRowStyle={{ backgroundColor: "red" }}
+                    buttonTextStyle={{ color: "white" }}
+                />
+                <SelectDropdown
+                    data={locationdata}
+                    onSelect={(e) => selectLocation(e)}
+                    defaultButtonText={"Location"}
+                    rowTextStyle={{ color: "white" }}
+                    dropdownStyle={{
+                        borderBottomEndRadius: "20px",
+                        borderBottomColor: "red",
+                        backgroundColor: "black",
+                        borderColor: "red",
+                        color: "red",
+                    }}
+                    buttonStyle={{
+                        borderRadius: "20px",
+                        backgroundColor: "black",
+                        borderWidth: "2px",
+                        color: "red",
+                        borderColor: "red",
+                        width: "50%",
+                    }}
+                    selectedRowStyle={{ backgroundColor: "red" }}
+                    buttonTextStyle={{ color: "white" }}
+                />
+            </View>
         </View>
     );
 };

@@ -20,6 +20,9 @@ const locationdata = [
     "Marion",
     "Warradale",
     "Victor Harbor",
+    "Port Elliot",
+    "Glenelg",
+    "Norwood",
 ];
 
 const Businesses = () => {
@@ -57,7 +60,7 @@ const Businesses = () => {
                 onChangeText={onChangeSearch}
                 value={searchQuery}
             />
-            <View className="flex flex-row">
+            <View className="flex flex-row mb-2">
                 <SelectDropdown
                     data={businessCategories}
                     onSelect={(e) => selectType(e)}
