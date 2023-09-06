@@ -46,10 +46,13 @@ const Businesses = () => {
                 data={businessCategories}
                 onSelect={(e) => selectType(e)}
                 defaultButtonText={"Type"}
+                rowTextStyle={{ color: "white" }}
                 dropdownStyle={{
                     borderBottomEndRadius: "20px",
+                    borderBottomColor: "red",
                     backgroundColor: "black",
                     borderColor: "red",
+                    color: "red",
                 }}
                 buttonStyle={{
                     borderRadius: "20px",
@@ -58,7 +61,8 @@ const Businesses = () => {
                     color: "red",
                     borderColor: "red",
                 }}
-                selectedRowStyle={{ backgroundColor: "tomato" }}
+                selectedRowStyle={{ backgroundColor: "red" }}
+                buttonTextStyle={{ color: "white" }}
             />
             <BusinessList />
         </View>
