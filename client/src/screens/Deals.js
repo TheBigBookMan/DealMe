@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { useState } from "react";
+import DealsList from "../components/Deals/DealsList";
 import SelectDropdown from "react-native-select-dropdown";
 
 const dealCategories = [
@@ -106,6 +107,7 @@ const Deals = () => {
                     buttonTextStyle={{ color: "white" }}
                 />
             </View>
+            <DealsList />
         </View>
     );
 };
