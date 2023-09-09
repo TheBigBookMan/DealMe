@@ -8,7 +8,7 @@ const Description = ({ data }) => {
     };
 
     return (
-        <Pressable onPress={() => goToBusiness(data.name)}>
+        <Pressable key={data.name} onPress={() => goToBusiness(data.name)}>
             <View>
                 <Text className="text-slate-200">{data.location}</Text>
                 <Text className="text-slate-200">
@@ -32,6 +32,7 @@ const BusinessList = () => {
         <ScrollView className="flex flex-col overflow-y-auto">
             {businesses.map((business) => (
                 <List.Item
+                    key={business.name}
                     title={business.name}
                     description={() => <Description data={business} />}
                 />
