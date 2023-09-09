@@ -5,12 +5,13 @@ import { specialshard } from "../../utils/deals";
 // ? Maybe a "special offers" section where companies can pay us to promote even more on the homepage
 // ? What's on tonight section?????
 
-const Description = ({ data }) => {
-    const goToDeal = (deal) => {
-        Alert.alert(deal);
-    };
+const Description = ({ data, navigation }) => {
+    const business = data.venue;
+
     return (
-        <Pressable onPress={() => goToDeal(data.venue)}>
+        <Pressable
+            onPress={() => navigation.navigate("Businesses", { business })}
+        >
             <View>
                 <Text className="text-slate-200">{data.venue}</Text>
                 <Text className="text-slate-200 text-sm">{data.location}</Text>
@@ -20,7 +21,7 @@ const Description = ({ data }) => {
     );
 };
 
-const Specials = () => {
+const Specials = ({ navigation }) => {
     return (
         <View className=" h-[400px] bg-gray-800 p-2">
             <Text className="font-bold text-2xl text-red-500">Specials</Text>
@@ -28,7 +29,9 @@ const Specials = () => {
                 {specialshard.map((deal) => (
                     <List.Item
                         title={deal.special}
-                        description={() => <Description data={deal} />}
+                        description={() => (
+                            <Description navigation={navigation} data={deal} />
+                        )}
                         left={(props) => (
                             <Image
                                 source={deal.img}

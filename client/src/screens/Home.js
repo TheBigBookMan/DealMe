@@ -5,7 +5,7 @@ import Categories from "../components/Home/Categories";
 import Specials from "../components/Home/Specials";
 import Map from "../components/Home/Map";
 
-const Home = () => {
+const Home = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const onChangeSearch = (query) => setSearchQuery(query);
 
@@ -27,9 +27,9 @@ const Home = () => {
                 onChangeText={onChangeSearch}
                 value={searchQuery}
             />
-            <Categories />
-            <Specials />
-            <Map />
+            <Categories navigation={navigation} />
+            <Specials navigation={navigation} />
+            <Map navigation={navigation} />
         </View>
     );
 };

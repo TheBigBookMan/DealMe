@@ -27,9 +27,11 @@ const locationdata = [
     "Norwood",
 ];
 
-const Deals = () => {
+const Deals = ({ route }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const onChangeSearch = (query) => setSearchQuery(query);
+    // const { type } = route.params;
+    // console.log(type);
 
     // TODO add in proepr search
     const submitSearch = () => {
