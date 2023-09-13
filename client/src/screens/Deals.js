@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import { Searchbar } from "react-native-paper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DealsList from "../components/Deals/DealsList";
 import SelectDropdown from "react-native-select-dropdown";
 
@@ -27,11 +27,10 @@ const locationdata = [
     "Norwood",
 ];
 
-const Deals = ({ route }) => {
+const Deals = ({ route, navigation }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const onChangeSearch = (query) => setSearchQuery(query);
-    // const { type } = route.params;
-    // console.log(type);
+    const [searchType, setSearchType] = useState();
 
     // TODO add in proepr search
     const submitSearch = () => {
@@ -49,6 +48,13 @@ const Deals = ({ route }) => {
         console.log(e);
         alert(e);
     };
+
+    useEffect(() => {
+        if (route.params) {
+            const { type } = route.params;
+            setSearchType(type);
+        }
+    }, [route]);
 
     return (
         <View className="flex flex-col gap-2 p-1 px-2">
@@ -109,7 +115,7 @@ const Deals = ({ route }) => {
                     buttonTextStyle={{ color: "white" }}
                 />
             </View>
-            <DealsList />
+            <DealsList navigation={navigation} />
         </View>
     );
 };
