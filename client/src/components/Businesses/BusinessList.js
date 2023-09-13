@@ -1,14 +1,15 @@
-import { View, Text, Image, Pressable, Alert, ScrollView } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { List } from "react-native-paper";
 import { businesses } from "../../utils/businesses";
 
-const Description = ({ data }) => {
-    const goToBusiness = (business) => {
-        Alert.alert(business);
-    };
+const Description = ({ data, navigation }) => {
+    const { businessId } = data;
 
     return (
-        <Pressable key={data.name} onPress={() => goToBusiness(data.name)}>
+        <TouchableOpacity
+            key={data.name}
+            onPress={() => navigation.navigate("Businesses", { businessId })}
+        >
             <View>
                 <Text className="text-slate-200">{data.location}</Text>
                 <Text className="text-slate-200">
@@ -23,18 +24,20 @@ const Description = ({ data }) => {
                     ))}
                 </View>
             </View>
-        </Pressable>
+        </TouchableOpacity>
     );
 };
 
-const BusinessList = () => {
+const BusinessList = ({ navigation }) => {
     return (
         <ScrollView className="flex flex-col overflow-y-auto">
             {businesses.map((business) => (
                 <List.Item
                     key={business.name}
                     title={business.name}
-                    description={() => <Description data={business} />}
+                    description={() => (
+                        <Description navigation={navigation} data={business} />
+                    )}
                 />
             ))}
         </ScrollView>

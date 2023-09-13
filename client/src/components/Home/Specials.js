@@ -1,4 +1,12 @@
-import { View, Text, Image, Pressable, Alert, ScrollView } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    Pressable,
+    Alert,
+    ScrollView,
+    TouchableOpacity,
+} from "react-native";
 import { List } from "react-native-paper";
 import { specialshard } from "../../utils/deals";
 
@@ -6,18 +14,18 @@ import { specialshard } from "../../utils/deals";
 // ? What's on tonight section?????
 
 const Description = ({ data, navigation }) => {
-    const business = data.venue;
+    const { businessId } = data;
 
     return (
-        <Pressable
-            onPress={() => navigation.navigate("Businesses", { business })}
+        <TouchableOpacity
+            onPress={() => navigation.navigate("Businesses", { businessId })}
         >
             <View>
                 <Text className="text-slate-200">{data.venue}</Text>
                 <Text className="text-slate-200 text-sm">{data.location}</Text>
                 <Text className="text-slate-200 text-sm">{data.time}</Text>
             </View>
-        </Pressable>
+        </TouchableOpacity>
     );
 };
 
