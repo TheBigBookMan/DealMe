@@ -1,114 +1,41 @@
 import { View, Text } from "react-native";
-import { Searchbar } from "react-native-paper";
-import { useState } from "react";
-import BusinessList from "../components/Businesses/BusinessList";
-import SelectDropdown from "react-native-select-dropdown";
+import { useEffect, useState } from "react";
+import AllBusinesses from "../components/Businesses/AllBusinesses";
+import Business from "../components/Businesses/Business";
 
-const businessCategories = [
-    "Bar",
-    "Pub",
-    "Restaurant",
-    "NightClub",
-    "EventVenue",
-    "Festival",
-];
+const Businesses = ({ route, navigation }) => {
+    const [allBusiness, setAllBusiness] = useState(true);
+    const [businessIdToView, setBusinessIdToView] = useState();
 
-const locationdata = [
-    "Adelaide",
-    "Mitcham",
-    "Unley",
-    "Marion",
-    "Warradale",
-    "Victor Harbor",
-    "Port Elliot",
-    "Glenelg",
-    "Norwood",
-];
-
-const Businesses = () => {
-    const [searchQuery, setSearchQuery] = useState("");
-    const onChangeSearch = (query) => setSearchQuery(query);
-
-    // TODO add in proepr search
-    const submitSearch = () => {
-        alert(searchQuery);
+    const checkRoute = () => {
+        const { businessId } = route.params;
+        if (businessId) {
+            console.log(businessId);
+            setBusinessIdToView(businessId);
+            setAllBusiness(false);
+        }
     };
 
-    // TODO fix this up to filter the venue type
-    const selectType = (e) => {
-        console.log(e);
-        alert(e);
-    };
+    useEffect(() => {
+        if (route.params) {
+            checkRoute();
+        }
+    }, [route]);
 
-    // TODO fix this up to filter the venue location
-    const selectLocation = (e) => {
-        console.log(e);
-        alert(e);
-    };
-
-    // TODO the color of the text is not adjustable??? need to look closer, the inline css-js 'color' property not working
     return (
-        <View className="flex flex-col gap-2 p-1 px-2">
+        <View className="flex flex-col p-1 px-2">
             <Text className="font-bold text-red-500 p-2 text-3xl">
                 Businesses
             </Text>
-            <Searchbar
-                onSubmitEditing={submitSearch}
-                elevation={1}
-                iconColor="red"
-                placeholder="Search"
-                onChangeText={onChangeSearch}
-                value={searchQuery}
-            />
-            <View className="flex flex-row mb-2">
-                <SelectDropdown
-                    data={businessCategories}
-                    onSelect={(e) => selectType(e)}
-                    defaultButtonText={"Type"}
-                    rowTextStyle={{ color: "white" }}
-                    dropdownStyle={{
-                        borderBottomEndRadius: "20px",
-                        borderBottomColor: "red",
-                        backgroundColor: "black",
-                        borderColor: "red",
-                        color: "red",
-                    }}
-                    buttonStyle={{
-                        borderRadius: "20px",
-                        backgroundColor: "black",
-                        borderWidth: "2px",
-                        color: "red",
-                        borderColor: "red",
-                        width: "50%",
-                    }}
-                    selectedRowStyle={{ backgroundColor: "red" }}
-                    buttonTextStyle={{ color: "white" }}
+            {allBusiness ? (
+                <AllBusinesses navigation={navigation} />
+            ) : (
+                <Business
+                    navigation={navigation}
+                    businessId={businessIdToView}
+                    setAllBusiness={setAllBusiness}
                 />
-                <SelectDropdown
-                    data={locationdata}
-                    onSelect={(e) => selectLocation(e)}
-                    defaultButtonText={"Location"}
-                    rowTextStyle={{ color: "white" }}
-                    dropdownStyle={{
-                        borderBottomEndRadius: "20px",
-                        borderBottomColor: "red",
-                        backgroundColor: "black",
-                        borderColor: "red",
-                        color: "red",
-                    }}
-                    buttonStyle={{
-                        borderRadius: "20px",
-                        backgroundColor: "black",
-                        borderWidth: "2px",
-                        color: "red",
-                        borderColor: "red",
-                        width: "50%",
-                    }}
-                    selectedRowStyle={{ backgroundColor: "red" }}
-                    buttonTextStyle={{ color: "white" }}
-                />
-            </View>
-            <BusinessList />
+            )}
         </View>
     );
 };
