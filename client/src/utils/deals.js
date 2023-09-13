@@ -3,6 +3,7 @@ import cocktail from "../images/cocktail.png";
 
 export const specialshard = [
     {
+        businessId: "1234",
         venue: "Torrens Arms",
         special: "2 for 1 Parmis",
         time: "6-10pm",
@@ -10,6 +11,7 @@ export const specialshard = [
         img: parmi,
     },
     {
+        businessId: "12234",
         venue: "Marion Hoten",
         special: "$10 pints",
         time: "8-10pm",
@@ -17,6 +19,7 @@ export const specialshard = [
         img: parmi,
     },
     {
+        businessId: "5434",
         venue: "The Bar",
         special: "Free cocktails",
         time: "6-7pm",
@@ -24,6 +27,7 @@ export const specialshard = [
         img: cocktail,
     },
     {
+        businessId: "1234",
         venue: "Torrens Arms",
         special: "2 for 1 Parmis",
         time: "6-10pm",
@@ -31,6 +35,7 @@ export const specialshard = [
         img: parmi,
     },
     {
+        businessId: "12234",
         venue: "Marion Hoten",
         special: "$10 pints",
         time: "8-10pm",
@@ -38,6 +43,7 @@ export const specialshard = [
         img: parmi,
     },
     {
+        businessId: "5434",
         venue: "The Bar",
         special: "Free cocktails",
         time: "6-7pm",
@@ -45,6 +51,7 @@ export const specialshard = [
         img: cocktail,
     },
     {
+        businessId: "12234",
         venue: "Marion Hoten",
         special: "$10 pints",
         time: "8-10pm",
@@ -52,6 +59,7 @@ export const specialshard = [
         img: parmi,
     },
     {
+        businessId: "5434",
         venue: "The Bar",
         special: "Free cocktails",
         time: "6-7pm",
@@ -59,6 +67,7 @@ export const specialshard = [
         img: cocktail,
     },
     {
+        businessId: "12234",
         venue: "Marion Hoten",
         special: "$10 pints",
         time: "8-10pm",
@@ -66,6 +75,7 @@ export const specialshard = [
         img: parmi,
     },
     {
+        businessId: "5434",
         venue: "The Bar",
         special: "Free cocktails",
         time: "6-7pm",

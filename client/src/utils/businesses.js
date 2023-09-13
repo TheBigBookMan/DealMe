@@ -1,5 +1,6 @@
 export const businesses = [
     {
+        businessId: "1234",
         name: "Torrens Arms",
         location: "Mitcham",
         venueType: "Pub",
@@ -8,6 +9,7 @@ export const businesses = [
         categories: ["Food", "Drink", "Live Music"],
     },
     {
+        businessId: "12234",
         name: "Marion Hotel",
         location: "Marion",
         venueType: "Pub",
@@ -16,6 +18,7 @@ export const businesses = [
         categories: ["Food", "Drink", "Live Music"],
     },
     {
+        businessId: "5434",
         name: "Mylk",
         location: "Adelaide CBD",
         venueType: "Restaurant",
@@ -24,6 +27,7 @@ export const businesses = [
         categories: ["Food", "Drink", "Live Music", "Family"],
     },
     {
+        businessId: "645674",
         name: "Hacienda",
         location: "Adelaide CBD",
         venueType: "Bar",
@@ -32,6 +36,7 @@ export const businesses = [
         categories: ["Drink", "Dance"],
     },
     {
+        businessId: "787878",
         name: "Marion Hotel",
         location: "Marion",
         venueType: "Pub",
@@ -40,6 +45,7 @@ export const businesses = [
         categories: ["Food", "Drink", "Live Music"],
     },
     {
+        businessId: "1111",
         name: "Mylk",
         location: "Adelaide CBD",
         venueType: "Restaurant",
@@ -48,6 +54,7 @@ export const businesses = [
         categories: ["Food", "Drink", "Live Music", "Family"],
     },
     {
+        businessId: "65554",
         name: "Hacienda",
         location: "Adelaide CBD",
         venueType: "Bar",
@@ -56,6 +63,7 @@ export const businesses = [
         categories: ["Drink", "Dance"],
     },
     {
+        businessId: "234234",
         name: "Marion Hotel",
         location: "Marion",
         venueType: "Pub",
@@ -64,6 +72,7 @@ export const businesses = [
         categories: ["Food", "Drink", "Live Music"],
     },
     {
+        businessId: "87767",
         name: "Mylk",
         location: "Adelaide CBD",
         venueType: "Restaurant",
@@ -72,6 +81,7 @@ export const businesses = [
         categories: ["Food", "Drink", "Live Music", "Family"],
     },
     {
+        businessId: "65437",
         name: "Hacienda",
         location: "Adelaide CBD",
         venueType: "Bar",
