@@ -1,7 +1,7 @@
 export const businesses = [
     {
         businessId: "1234",
-        name: "Torrens Arms",
+        name: "Torrens Armss",
         location: "Mitcham",
         venueType: "Pub",
         openTime: "10am",
@@ -10,7 +10,7 @@ export const businesses = [
     },
     {
         businessId: "12234",
-        name: "Marion Hotel",
+        name: "Marion Hotell",
         location: "Marion",
         venueType: "Pub",
         openTime: "10am",
@@ -19,7 +19,7 @@ export const businesses = [
     },
     {
         businessId: "5434",
-        name: "Mylk",
+        name: "Mylks",
         location: "Adelaide CBD",
         venueType: "Restaurant",
         openTime: "10am",
@@ -28,7 +28,7 @@ export const businesses = [
     },
     {
         businessId: "645674",
-        name: "Hacienda",
+        name: "Haciendaa",
         location: "Adelaide CBD",
         venueType: "Bar",
         openTime: "10am",
@@ -37,7 +37,7 @@ export const businesses = [
     },
     {
         businessId: "787878",
-        name: "Marion Hotel",
+        name: "Marion Hotele",
         location: "Marion",
         venueType: "Pub",
         openTime: "10am",
@@ -73,7 +73,7 @@ export const businesses = [
     },
     {
         businessId: "87767",
-        name: "Mylk",
+        name: "Mylke",
         location: "Adelaide CBD",
         venueType: "Restaurant",
         openTime: "10am",
@@ -82,7 +82,7 @@ export const businesses = [
     },
     {
         businessId: "65437",
-        name: "Hacienda",
+        name: "Haciendar",
         location: "Adelaide CBD",
         venueType: "Bar",
         openTime: "10am",

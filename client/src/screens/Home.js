@@ -5,6 +5,8 @@ import Categories from "../components/Home/Categories";
 import Specials from "../components/Home/Specials";
 import Map from "../components/Home/Map";
 
+// TODO use react native asyncstorage as the localstorage and could save stuff like favourites without needin to sign in, or have some sort of history
+
 const Home = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const onChangeSearch = (query) => setSearchQuery(query);

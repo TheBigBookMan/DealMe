@@ -1,8 +1,10 @@
 import { View, Text } from "react-native";
 import { Searchbar } from "react-native-paper";
-import { useState } from "react";
 import BusinessList from "./BusinessList";
 import SelectDropdown from "react-native-select-dropdown";
+import { api } from "../../utils/api";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const businessCategories = [
     "Bar",
@@ -26,6 +28,7 @@ const locationdata = [
 ];
 
 const AllBusinesses = ({ navigation }) => {
+    const [businesses, setBusinesses] = useState();
     const [searchQuery, setSearchQuery] = useState("");
     const onChangeSearch = (query) => setSearchQuery(query);
 
@@ -45,6 +48,23 @@ const AllBusinesses = ({ navigation }) => {
         console.log(e);
         alert(e);
     };
+
+    const handleAllBusinessesFetch = async () => {
+        try {
+            const response = await api.get("/businesses");
+
+            if (response.data) {
+                // console.log(response.data);
+                setBusinesses(response.data);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        handleAllBusinessesFetch();
+    }, []);
 
     // TODO the color of the text is not adjustable??? need to look closer, the inline css-js 'color' property not working
     return (
@@ -105,7 +125,9 @@ const AllBusinesses = ({ navigation }) => {
                     buttonTextStyle={{ color: "white" }}
                 />
             </View>
-            <BusinessList navigation={navigation} />
+            {businesses && (
+                <BusinessList navigation={navigation} businesses={businesses} />
+            )}
         </View>
     );
 };

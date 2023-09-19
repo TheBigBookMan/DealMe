@@ -1,12 +1,4 @@
-import {
-    View,
-    Text,
-    Image,
-    Pressable,
-    Alert,
-    ScrollView,
-    TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { List } from "react-native-paper";
 import { specialshard } from "../../utils/deals";
 
@@ -15,7 +7,6 @@ const Description = ({ data, navigation }) => {
 
     return (
         <TouchableOpacity
-            key={data.venue}
             onPress={() => navigation.navigate("Businesses", { businessId })}
         >
             <View>
@@ -30,9 +21,9 @@ const Description = ({ data, navigation }) => {
 const DealsList = ({ navigation }) => {
     return (
         <ScrollView className="flex flex-col overflow-y-auto bg-gray-800 p-2">
-            {specialshard.map((deal) => (
+            {specialshard.map((deal, idx) => (
                 <List.Item
-                    key={deal.venue}
+                    key={deal.venue + idx}
                     title={deal.special}
                     description={() => (
                         <Description navigation={navigation} data={deal} />

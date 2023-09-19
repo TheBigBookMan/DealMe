@@ -1,9 +1,9 @@
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { List } from "react-native-paper";
-import { businesses } from "../../utils/businesses";
+// import { businesses } from "../../utils/businesses";
 
 const Description = ({ data, navigation }) => {
-    const { businessId } = data;
+    const businessId = data.id;
 
     return (
         <TouchableOpacity
@@ -13,22 +13,23 @@ const Description = ({ data, navigation }) => {
             <View>
                 <Text className="text-slate-200">{data.location}</Text>
                 <Text className="text-slate-200">
-                    {data.venueType}, {data.openTime}-{data.closeTime}
+                    , {data.openTime}-{data.closeTime}
                 </Text>
                 <View className="flex flex-row gap-1">
-                    {data.categories.map((cat, idx) => (
-                        <Text className="text-slate-200">
-                            {cat}
-                            {idx === data.categories.length - 1 ? "" : ","}
-                        </Text>
-                    ))}
+                    {data.categories &&
+                        data.categories.map((cat, idx) => (
+                            <Text key={cat + idx} className="text-slate-200">
+                                {cat}
+                                {idx === data.categories.length - 1 ? "" : ","}
+                            </Text>
+                        ))}
                 </View>
             </View>
         </TouchableOpacity>
     );
 };
 
-const BusinessList = ({ navigation }) => {
+const BusinessList = ({ navigation, businesses }) => {
     return (
         <ScrollView className="flex flex-col overflow-y-auto">
             {businesses.map((business) => (

@@ -1,12 +1,4 @@
-import {
-    View,
-    Text,
-    Image,
-    Pressable,
-    Alert,
-    ScrollView,
-    TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { List } from "react-native-paper";
 import { specialshard } from "../../utils/deals";
 
