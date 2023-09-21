@@ -10,7 +10,8 @@ const Description = ({ data, navigation }) => {
             key={data.name}
             onPress={() => navigation.navigate("Businesses", { businessId })}
         >
-            <View>
+            <View className="flex flex-col w-full border border-red-500 p-4 rounded-xl">
+                <Text className="text-red-500 text-xl">{data.name}</Text>
                 <Text className="text-slate-200">{data.location}</Text>
                 <Text className="text-slate-200">
                     , {data.openTime}-{data.closeTime}
@@ -29,13 +30,14 @@ const Description = ({ data, navigation }) => {
     );
 };
 
+// TODO make the list.item gaps smaller as they are too far--- need to check react native paper for that
+
 const BusinessList = ({ navigation, businesses }) => {
     return (
         <ScrollView className="flex flex-col overflow-y-auto">
             {businesses.map((business) => (
                 <List.Item
                     key={business.name}
-                    title={business.name}
                     description={() => (
                         <Description navigation={navigation} data={business} />
                     )}

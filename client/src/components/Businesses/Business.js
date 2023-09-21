@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { useState, useEffect } from "react";
 import { api } from "../../utils/api";
+import BusinessData from "./BusinessData";
 
 // TODO retreive the businessId in props and then call backend on page load to get that business info
 
@@ -11,7 +12,6 @@ const Business = ({ businessId, navigation, setAllBusiness }) => {
     const fetchBusinessData = async () => {
         try {
             const response = await api.get(`/businesses/${businessId}`);
-            console.log(response.data);
             if (response.data) {
                 setBusinessData(response.data);
             }
@@ -43,38 +43,47 @@ const Business = ({ businessId, navigation, setAllBusiness }) => {
 
                         <View className="flex flex-row gap-4 pr-2">
                             <TouchableOpacity
-                                className=""
+                                className={`${
+                                    type !== "deals"
+                                        ? "text-red-500 bg-black "
+                                        : "bg-white text-red-500 "
+                                } w-[80px] h-[40px] text-2xl flex justify-center items-center rounded border-2  border-red-500
+                                `}
                                 onPress={() => setType("deals")}
                             >
                                 <Text
                                     className={`${
                                         type !== "deals"
-                                            ? "text-white bg-black "
-                                            : "bg-white text-red-500 "
-                                    } w-[80px] h-[40px] text-2xl text-center rounded border-2  border-red-500
-                                    `}
+                                            ? "text-red-500"
+                                            : "text-black"
+                                    }`}
                                 >
                                     Deals
                                 </Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity
-                                className=""
+                                className={`${
+                                    type !== "events"
+                                        ? "text-red-500 bg-black "
+                                        : "bg-white text-red-500 "
+                                } w-[80px] h-[40px] text-2xl flex justify-center items-center rounded-lg border-2 border-red-500
+                                `}
                                 onPress={() => setType("events")}
                             >
                                 <Text
                                     className={`${
                                         type !== "events"
-                                            ? "text-white bg-black "
-                                            : "bg-white text-red-500 "
-                                    } w-[80px] h-[40px] text-2xl text-center rounded-lg border-2 border-red-500
-                                    `}
+                                            ? "text-red-500"
+                                            : "text-black"
+                                    }`}
                                 >
                                     Events
                                 </Text>
                             </TouchableOpacity>
                         </View>
                     </View>
+                    <BusinessData type={type} data={businessData} />
                 </View>
             )}
         </View>
