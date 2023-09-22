@@ -9,7 +9,7 @@ const Description = ({ data }) => {
     return (
         <View
             key={id}
-            className="h-[160px] flex flex-row gap-2 items-center w-full"
+            className="h-[160px] flex flex-row gap-2 items-center w-full border-2 border-red-500 rounded-xl"
         >
             <Image source={IMG} className="w-[100px] h-[80px] rounded-xl" />
             <View className="flex flex-col">
@@ -44,6 +44,7 @@ const BusinessData = ({ type, data }) => {
             {typeDealData &&
                 typeDealData.map((typeDeal) => (
                     <List.Item
+                        style={{ marginVertical: 0, paddingVertical: 0 }}
                         key={typeDeal.id}
                         description={() => <Description data={typeDeal} />}
                     />
