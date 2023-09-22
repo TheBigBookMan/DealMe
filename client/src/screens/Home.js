@@ -1,11 +1,14 @@
 import { View, Text, ScrollView } from "react-native";
 import { Searchbar } from "react-native-paper";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Categories from "../components/Home/Categories";
 import Specials from "../components/Home/Specials";
 import Map from "../components/Home/Map";
+import { api } from "../utils/api";
 
 // TODO use react native asyncstorage as the localstorage and could save stuff like favourites without needin to sign in, or have some sort of history
+
+// *** Google maps API- AIzaSyAC8a0LYMYh_-ufu-y7YX5_i6dUoRXM224
 
 const Home = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -15,6 +18,23 @@ const Home = ({ navigation }) => {
     const submitSearch = () => {
         alert(searchQuery);
     };
+
+    const geoLocationRequest = async () => {
+        try {
+            const response = await api.post(
+                "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAC8a0LYMYh_-ufu-y7YX5_i6dUoRXM224"
+            );
+            console.log(response.data);
+            if (response.data) {
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        geoLocationRequest();
+    }, []);
 
     return (
         <View className="flex flex-col gap-1 p-1">
