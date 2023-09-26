@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+import MapViewer from "../components/Map/MapViewer";
 
 // ? Have an interactive map where user can filter through all different types of places they want to see on the interactive google maps
 // ? Could filter by distance, type, price range, date
@@ -8,7 +9,7 @@ import { Text, View } from "react-native";
 const Map = () => {
     return (
         <View>
-            <Text>MAP</Text>
+            <MapViewer />
         </View>
     );
 };
