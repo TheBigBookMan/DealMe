@@ -5,6 +5,7 @@ import {
 } from "@expo/vector-icons";
 import { View } from "react-native";
 import Home from "../../screens/Home";
+import Map from "../../screens/Map";
 import Businesses from "../../screens/Businesses";
 import Deals from "../../screens/Deals";
 import Settings from "../../screens/Settings";
@@ -26,6 +27,19 @@ const BottomNav = () => {
                     tabBarIcon: ({ focused }) => (
                         <Entypo
                             name="home"
+                            size={25}
+                            color={focused ? "red" : "white"}
+                        />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Map"
+                component={Map}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <FontAwesome
+                            name="map-marker"
                             size={25}
                             color={focused ? "red" : "white"}
                         />

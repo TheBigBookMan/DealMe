@@ -19,6 +19,18 @@ const Home = ({ navigation }) => {
         alert(searchQuery);
     };
 
+    // ? This can be triggered by a useeffect and state change that will be the longitue and latitude coorindations from the geolcoation request
+    const getReverseGeocodingRequest = async () => {
+        try {
+            const response = await api.post(
+                "https://maps.googleapis.com/maps/api/geocode/json?latlng=-34.920288,138.628874&key=AIzaSyAC8a0LYMYh_-ufu-y7YX5_i6dUoRXM224"
+            );
+            console.log(response);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     const geoLocationRequest = async () => {
         try {
             const response = await api.post(
@@ -33,7 +45,7 @@ const Home = ({ navigation }) => {
     };
 
     useEffect(() => {
-        geoLocationRequest();
+        // geoLocationRequest();
     }, []);
 
     return (
