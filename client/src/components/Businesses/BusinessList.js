@@ -37,7 +37,7 @@ const BusinessList = ({ navigation, businesses }) => {
         <ScrollView className="flex flex-col overflow-y-auto">
             {businesses.map((business) => (
                 <List.Item
-                    style={{ marginVertical: 0, paddingVertical: 0 }}
+                    style={{ marginVertical: -6, paddingVertical: 0 }}
                     key={business.name}
                     description={() => (
                         <Description navigation={navigation} data={business} />

@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { List } from "react-native-paper";
 import IMG from "../../images/parmi.png";
 
+// TODO have a modal popup with more description of the deal and maybe a better zoom in of photo
+
 const Description = ({ data }) => {
     const { date, description, startTime, endTime, id, price, title } = data;
 
