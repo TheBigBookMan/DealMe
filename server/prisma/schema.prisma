@@ -25,6 +25,8 @@ model Businesses {
     capacity Int?
     deals Deal[]
     events Event[]
+    latitude Float
+    longitude Float
 }
 
 

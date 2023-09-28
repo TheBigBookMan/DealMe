@@ -17,11 +17,28 @@ const businessHttp = {
     },
     createBusiness: async (req, res) => {
         try {
-            const { name, location } = req.body;
+            const {
+                name,
+                location,
+                contactNumber,
+                openTime,
+                closeTime,
+                notificationDay,
+                notificationTime,
+                latitude,
+                longitude,
+            } = req.body;
             const newBusiness = await prisma.businesses.create({
                 data: {
                     name,
                     location,
+                    contactNumber,
+                    openTime,
+                    closeTime,
+                    notificationDay,
+                    notificationTime,
+                    latitude,
+                    longitude,
                 },
             });
             res.json(newBusiness);
