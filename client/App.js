@@ -5,6 +5,7 @@ import { name as appName } from "./app.json";
 import App from "./src/App";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
+import { LocationProvider } from "./src/contexts/LocationContext";
 
 export default function Main() {
     const theme = {
@@ -16,9 +17,11 @@ export default function Main() {
 
     return (
         <PaperProvider theme={theme}>
-            <NavigationContainer>
-                <App />
-            </NavigationContainer>
+            <LocationProvider>
+                <NavigationContainer>
+                    <App />
+                </NavigationContainer>
+            </LocationProvider>
         </PaperProvider>
     );
 }

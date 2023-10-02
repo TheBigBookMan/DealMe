@@ -20,6 +20,7 @@ const Home = ({ navigation }) => {
     };
 
     // ? This can be triggered by a useeffect and state change that will be the longitue and latitude coorindations from the geolcoation request
+    // TODO this can then get the data from BE and filter it to be suburbs that are close by
     const getReverseGeocodingRequest = async () => {
         try {
             const response = await api.post(
@@ -31,22 +32,7 @@ const Home = ({ navigation }) => {
         }
     };
 
-    const geoLocationRequest = async () => {
-        try {
-            const response = await api.post(
-                "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAC8a0LYMYh_-ufu-y7YX5_i6dUoRXM224"
-            );
-            console.log(response.data);
-            if (response.data) {
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    useEffect(() => {
-        // geoLocationRequest();
-    }, []);
+    useEffect(() => {}, []);
 
     return (
         <View className="flex flex-col gap-1 p-1">
