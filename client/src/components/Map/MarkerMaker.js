@@ -1,12 +1,13 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Marker } from "react-native-maps";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // ?? THis is where the markers for each building within radius can be made and then rendered through in a map or something to the MapViewer main component
 const MarkerMaker = ({ data }) => {
     // console.log(data);
     const [selectedVenue, setSelectedVenue] = useState();
     const [selected, setSelected] = useState(false);
+    const [latestDeal, setLatestDeal] = useState();
     const lat = data.latitude;
     const lon = data.longitude;
 
@@ -36,6 +37,41 @@ const MarkerMaker = ({ data }) => {
         console.log(id);
     };
 
+    // TODO this will sort through that businesses deals and find th soonest so it can put that deal on the marker as the closest one to the date (could be for that night) and clicking on it will redirect the user to that businesses page to see more info about deals
+    const sortLatestDeal = () => {
+        if (data.deals.length === 0) {
+            return;
+        } else if (data.deals.length === 1) {
+            setLatestDeal(data.deals[0]);
+        } else {
+            // TODO
+            // TODO THIS IS BROKEN and doesnt properly return the latest deal, just leaving while in dev doing styling, needs FIXING
+            // !!!!!!!
+            const currentDate = new Date();
+            let closestDateObject = null;
+            let closestDateDifference = Number.MAX_SAFE_INTEGER;
+
+            data.deals.forEach((obj) => {
+                const objDate = new Date(obj.date);
+
+                const timeDifference = Math.abs(currentDate - objDate);
+
+                if (closestDateObject === null) closestDateObject = obj;
+
+                if (timeDifference < closestDateDifference) {
+                    closestDateObject = obj;
+                    closestDateDifference = timeDifference;
+                }
+            });
+            console.log(closestDateObject);
+            setLatestDeal(closestDateObject);
+        }
+    };
+
+    useEffect(() => {
+        sortLatestDeal();
+    }, [data]);
+
     return (
         <Marker
             onPress={() => selectMapIcon(data.id)}
@@ -50,12 +86,34 @@ const MarkerMaker = ({ data }) => {
             ) : (
                 <TouchableOpacity
                     onPress={() => seeVenueInfo(data.id)}
-                    className="w-[100px] flex flex-col bg-red-500 rounded-xl p-2 text-slate-300"
+                    className="w-[200px] flex flex-col bg-red-500 rounded-xl  text-slate-300"
                 >
-                    <Text className="text-slate-100 font-bold w-full truncate">
-                        {data.name}
-                    </Text>
-                    <Text className="">{data.location}</Text>
+                    {latestDeal && (
+                        <View className="bg-red-400 w-full h-[180px] text-white rounded-lg flex flex-col p-2">
+                            <Text className="text-lg font-bold ">
+                                Closest Deal:
+                            </Text>
+                            <Text className="text-white font-bold">
+                                {latestDeal.title}
+                            </Text>
+                            <Text className="text-white">
+                                {latestDeal.date}
+                            </Text>
+                            <Text className="text-white">
+                                {latestDeal.startTime}-{latestDeal.endTime}
+                            </Text>
+                            <Text className="text-white">
+                                {latestDeal.description}
+                            </Text>
+                        </View>
+                    )}
+
+                    <View className="p-2 flex flex-col">
+                        <Text className="text-slate-100 font-bold w-full truncate">
+                            {data.name}
+                        </Text>
+                        <Text className="">{data.location}</Text>
+                    </View>
                 </TouchableOpacity>
             )}
         </Marker>
