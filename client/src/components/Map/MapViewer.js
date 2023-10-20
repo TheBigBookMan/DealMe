@@ -11,7 +11,7 @@ import { useLocation } from "../../contexts/LocationContext";
 // TODO MapViewer initialregion can be the state of the location of the user, ORRR maybe we dont need a constantly updating map for the MVP because we can just have the initial region be gathered from the current location and then other screens can have their filters automatically set to a area based on the coordinates as well
 // TODO the initial region is not loading properly due to the delta coordinates
 
-const MapViewer = () => {
+const MapViewer = ({navigation}) => {
     const [businessData, setBusinessData] = useState();
     const { coordinates } = useLocation();
 
@@ -48,7 +48,7 @@ const MapViewer = () => {
                 showsScale={true}
             >
                 {businessData.map((business) => (
-                    <MarkerMaker key={business.name} data={business} />
+                    <MarkerMaker navigation={navigation} key={business.name} data={business} />
                 ))}
             </MapView>
         );

@@ -6,10 +6,10 @@ import MapViewer from "../components/Map/MapViewer";
 
 // https://github.com/m-wrzr/populartime
 
-const Map = () => {
+const Map = ({navigation}) => {
     return (
         <View>
-            <MapViewer />
+            <MapViewer navigation={navigation} />
         </View>
     );
 };

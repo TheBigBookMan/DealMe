@@ -1,9 +1,10 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Marker } from "react-native-maps";
 import { useEffect, useState } from "react";
+import { AntDesign } from "@expo/vector-icons";
 
 // ?? THis is where the markers for each building within radius can be made and then rendered through in a map or something to the MapViewer main component
-const MarkerMaker = ({ data }) => {
+const MarkerMaker = ({ data, navigation }) => {
     // console.log(data);
     const [selectedVenue, setSelectedVenue] = useState();
     const [selected, setSelected] = useState(false);
@@ -31,6 +32,8 @@ const MarkerMaker = ({ data }) => {
     //         description={`${data.location}- ${data.openTime}-${data.closeTime}`}
     //     />
     // );
+
+    // TODO if the business has a deal that may have multiple items like happy hour having beer, wine, cocktails etc then could just say happy hour and click on the happy hour and take to the business page deal to see the list of items
 
     // TODO when a user clicks on the description box then a small modal pops up with the next deal they have and you can click on a link to go to the business page
     const seeVenueInfo = (id) => {
@@ -86,25 +89,44 @@ const MarkerMaker = ({ data }) => {
             ) : (
                 <TouchableOpacity
                     onPress={() => seeVenueInfo(data.id)}
-                    className="w-[200px] flex flex-col bg-red-500 rounded-xl  text-slate-300"
+                    className="w-[200px] flex flex-col bg-black rounded-xl  text-slate-300"
                 >
                     {latestDeal && (
-                        <View className="bg-red-400 w-full h-[180px] text-white rounded-lg flex flex-col p-2">
-                            <Text className="text-lg font-bold ">
-                                Closest Deal:
-                            </Text>
-                            <Text className="text-white font-bold">
-                                {latestDeal.title}
-                            </Text>
-                            <Text className="text-white">
-                                {latestDeal.date}
-                            </Text>
-                            <Text className="text-white">
-                                {latestDeal.startTime}-{latestDeal.endTime}
-                            </Text>
-                            <Text className="text-white">
-                                {latestDeal.description}
-                            </Text>
+                        <View className="bg-red-500 w-full h-[200px] text-white rounded-lg flex flex-col justify-between p-2">
+                            <View className="flex flex-col gap-1">
+                                <Text className="text-lg font-bold ">
+                                    Earliest Deal:
+                                </Text>
+                                <Text className="text-white font-bold">
+                                    {latestDeal.title}
+                                </Text>
+                                <Text className="text-white">
+                                    {latestDeal.date}
+                                </Text>
+                                <Text className="text-white">
+                                    {latestDeal.startTime}-{latestDeal.endTime}
+                                </Text>
+                                <Text className="text-white">
+                                    {latestDeal.description}
+                                </Text>
+                            </View>
+                            <TouchableOpacity
+                                className="border-2 border-red-300 rounded-lg p-2 flex flex-row gap-2 justify-center items-center mx-2"
+                                onPress={() =>
+                                    navigation.navigate("Businesses", {
+                                        businessId,
+                                    })
+                                }
+                            >
+                                <Text className="text-white font-bold">
+                                    Check Out!
+                                </Text>
+                                <AntDesign
+                                    name="right"
+                                    size={16}
+                                    color="black"
+                                />
+                            </TouchableOpacity>
                         </View>
                     )}
 
@@ -112,7 +134,7 @@ const MarkerMaker = ({ data }) => {
                         <Text className="text-slate-100 font-bold w-full truncate">
                             {data.name}
                         </Text>
-                        <Text className="">{data.location}</Text>
+                        <Text className="text-slate-300">{data.location}</Text>
                     </View>
                 </TouchableOpacity>
             )}
