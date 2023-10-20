@@ -5,6 +5,8 @@ import { List } from "react-native-paper";
 const Description = ({ data, navigation }) => {
     const businessId = data.id;
 
+    // TODO some of the deals have multiple items with prices- eg happy hour could have (beer- $4, cocktails- $7, wine- $9 etcc) so need to figure out how to list them all
+
     return (
         <TouchableOpacity
             key={data.name}
