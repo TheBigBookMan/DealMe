@@ -16,9 +16,12 @@ datasource db {
 model Businesses {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     name String 
-    location String
-    notificationDay String?
-    notificationTime String?
+    suburb String
+    city String
+    state String
+    country String
+    notificationDay String @default("Sunday")
+    notificationTime String @default("9pm")
     contactNumber String?
     openTime String?
     closeTime String?
@@ -29,7 +32,7 @@ model Businesses {
     longitude Float
 }
 
-
+// ??? Maybe have a reoccuring column which will determine if its reoccuring or something
 // ???!!! DateTime type needs to be adjusted, using string for dev
 // * new model for deal
 model Deal {
@@ -40,6 +43,8 @@ model Deal {
     price Float
     startTime String
     endTime String
+    dealType String?
+    isSpecial Boolean @default(false)
     business Businesses @relation(fields: [businessId], references: [id])
     businessId String @db.ObjectId
 }

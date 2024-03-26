@@ -1,20 +1,20 @@
 const router = require("express").Router();
 const businessController = require("../../controller/businessController.js");
 
-// ? Route '/'
+// ? Route '/businesses'
 router
     .route("/")
     .get(businessController.getAllBusiness)
     .post(businessController.createBusiness);
 
-// ? Route '/:businessId'
+// ? Route '/businesses/:businessId'
 router
     .route("/:businessId")
     .get(businessController.getSingleBusiness)
     .delete(businessController.deleteBusiness)
     .put(businessController.addNotification);
 
-// ? Route '/:businessId/settings'
+// ? Route '/businesses/:businessId/settings'
 router
     .route("/:businessId/settings")
     .put(businessController.addBusinessSettings);

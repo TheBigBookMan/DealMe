@@ -3,8 +3,35 @@ const prisma = require("./client");
 const dealHttp = {
     getAllDeals: async (req, res) => {
         try {
-            const deals = await prisma.deal.findMany();
+            const { cityName } = req.query;
+
+            const deals = await prisma.deal.findMany({
+                include: {
+                    business: true,
+                },
+                where: {
+                    business: {
+                        city: cityName,
+                    },
+                },
+            });
             res.json(deals);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({ message: "Problem with server" });
+        }
+    },
+    getAllSpecials: async (req, res) => {
+        try {
+            const specials = await prisma.deal.findMany({
+                where: {
+                    isSpecial: true,
+                },
+                include: {
+                    business: true,
+                },
+            });
+            res.json(specials);
         } catch (err) {
             console.log(err);
             res.status(500).json({ message: "Problem with server" });

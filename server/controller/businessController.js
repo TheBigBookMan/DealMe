@@ -3,10 +3,15 @@ const prisma = require("./client");
 const businessHttp = {
     getAllBusiness: async (req, res) => {
         try {
+            const { cityName } = req.query;
+
             const businesses = await prisma.businesses.findMany({
                 include: {
                     deals: true,
                     events: true,
+                },
+                where: {
+                    city: cityName,
                 },
             });
             res.json(businesses);
